@@ -7,7 +7,7 @@ import self.anikole.euchre.data.Card.Suit;
 
 public class CardTest {
 	@Test
-	public void testComparisons() {
+	public void testComparisonsTrump() {
 		Card.Suit trumpSuit = Suit.DIAMONDS;
 		
 		Card left = new Card(Card.Suit.HEARTS, Card.Value.JACK);
@@ -37,5 +37,29 @@ public class CardTest {
 		Assert.assertTrue(left.checkTrumpAgainst(spadeAce, trumpSuit));
 		Assert.assertTrue(right.checkTrumpAgainst(clubAce, trumpSuit));
 		Assert.assertTrue(right.checkTrumpAgainst(spadeAce, trumpSuit));
+	}
+	
+	@Test
+	public void testHigh() {
+		Card jackOfClubs = new Card(Card.Suit.CLUBS, Card.Value.JACK);
+		Card kingOfClubs = new Card(Card.Suit.CLUBS, Card.Value.KING);
+		Card aceOfDiamonds = new Card(Card.Suit.DIAMONDS, Card.Value.ACE);
+		
+		Assert.assertTrue(kingOfClubs.checkHighAgainst(jackOfClubs));
+		Assert.assertFalse(jackOfClubs.checkHighAgainst(kingOfClubs));
+		Assert.assertFalse(kingOfClubs.checkHighAgainst(aceOfDiamonds));
+		Assert.assertFalse(aceOfDiamonds.checkHighAgainst(jackOfClubs));
+	}
+	
+	@Test
+	public void testLow() {
+		Card jackOfClubs = new Card(Card.Suit.CLUBS, Card.Value.JACK);
+		Card kingOfClubs = new Card(Card.Suit.CLUBS, Card.Value.KING);
+		Card aceOfDiamonds = new Card(Card.Suit.DIAMONDS, Card.Value.ACE);
+		
+		Assert.assertFalse(kingOfClubs.checkLowAgainst(jackOfClubs));
+		Assert.assertTrue(jackOfClubs.checkLowAgainst(kingOfClubs));
+		Assert.assertFalse(kingOfClubs.checkLowAgainst(aceOfDiamonds));
+		Assert.assertFalse(aceOfDiamonds.checkLowAgainst(jackOfClubs));
 	}
 }

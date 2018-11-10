@@ -133,4 +133,22 @@ public class Card {
 			return thisVal > otherVal;
 		}
 	}
+	
+	/**
+	 * Check if this card beats another under a high bid
+	 * @param other the card to check against
+	 * @return true if we win
+	 */
+	public boolean checkHighAgainst(Card other) {
+		return (this.getSuit() == other.getSuit()) && (this.getValue().numForValue() > other.getValue().numForValue());
+	}
+	
+	/**
+	 * Check if this card beats another under a low bid
+	 * @param other the card to check against
+	 * @return true if we win
+	 */
+	public boolean checkLowAgainst(Card other) {
+		return (this.getSuit() == other.getSuit()) && (this.getValue().numForValue() < other.getValue().numForValue());
+	}
 }
