@@ -1,5 +1,11 @@
 package self.anikole.euchre.data;
 
+/**
+ * A card used in a euchre game. Card implements logic
+ * for comparison with other cards under euchre rules
+ * @author Aleksandra
+ *
+ */
 public class Card {
 	public static enum Suit {
 		HEARTS,
