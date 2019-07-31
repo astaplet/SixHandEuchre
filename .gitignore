@@ -55,3 +55,4 @@ target/*
 #java stuff
 #===
 bin/*
+/target/
